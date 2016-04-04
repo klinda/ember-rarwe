@@ -1,0 +1,21 @@
+<div class="col-md-4">
+	<div class="list-group">
+		<div class="list-group-item">
+			<form {{action "createArtist" on="submit"}}>
+				{{input type="text" class="new-artist" placeholder="new artist" value=name}}
+				<button type="submit" class="btn btn-primary btn-sm new-artist-button" disabled={{isAddButtonDisabled}}>Add artist</button>
+			</form>
+		</div>
+		{{#each model as |artist|}}
+			{{#link-to "artists.artist" artist class="list-group-item artist-link"}}
+				{{capitalize artist.name}}
+				<span class="pointer glyphicon glyphicon-chevron-right"></span>
+			{{/link-to}}
+		{{/each}}
+	</div>
+</div>
+<div class="col-md-8">
+	<div class="list-group">
+		{{outlet}}
+	</div>
+</div>
